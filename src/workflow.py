@@ -35,9 +35,10 @@ def avalia_etapa(state: State):
     state["avaliacao"] = str(json_out['avaliacao'])
     state['feedback'] = str(json_out['feedback'])
 
-    if(state[avaliacao"] == '0'):
+    if(state[avaliacao"] == '0' AND state.step == oldStep):
         count++
-    
+       
+    oldStep = state.step
     return state
 
 def proxima_etapa(state: State):
