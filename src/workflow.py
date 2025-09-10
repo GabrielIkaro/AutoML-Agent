@@ -28,12 +28,15 @@ def avalia_etapa(state: State):
     agente_resumidor = Agent("meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8")
 
     prompt_avalia = Prompts.get_prompt('Avaliação', state)
-    out = Agent.invoke(prompt_avalia)
+    out = Agent.llm.invoke(prompt_avalia)
 
     json_out = json.loads(out)
 
-    state["avaliacao"] = json_out['avaliacao']
-    state['feedback'] = json_out['feedback']
+    state["avaliacao"] = str(json_out['avaliacao'])
+    state['feedback'] = str(json_out['feedback'])
+
+    if(state[avaliacao"] == '0'):
+        count++
     
     return state
 
